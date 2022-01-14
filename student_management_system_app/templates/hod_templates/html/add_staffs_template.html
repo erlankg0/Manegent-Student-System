@@ -14,7 +14,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" action="/add_staff_save" method="post">
+                    <form role="form" action="{% url 'add-staffs' %}" method="post">
                         {% csrf_token %}
                         <div class="card-body">
                             <div class="form-group">
@@ -63,6 +63,9 @@
                                             <div class="alert alert-info">{{ message }}</div>
                                         {% endif %}
                                         {% if message.tags == 'success' %}
+                                            <div class="alert alert-success">{{ message }}</div>
+                                        {% endif %}
+                                        {% if message.tags == 'already' %}
                                             <div class="alert alert-success">{{ message }}</div>
                                         {% endif %}
                                     {% endfor %}
