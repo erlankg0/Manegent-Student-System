@@ -2,7 +2,7 @@ from django.urls import path
 
 from student_management_system_app.views import show_demo_page, show_login_page, do_login, get_user_details, \
     logout_user, admin_home, add_staff, add_courses
-from student_management_system_app.views import add_staff_save, add_courses_save
+from student_management_system_app.views import add_staff_save, add_courses_save, add_students, add_students_save
 
 urlpatterns = [
     path("", show_login_page, name="login_page"),
@@ -15,4 +15,6 @@ urlpatterns = [
     path('add_staff_save', add_staff_save, name='staff_save'),
     path('add-courses', add_courses, name='add-course'),
     path('add_course_save', add_courses_save, name='course_save'),
+    path('add-students', add_students, name='add-students'),
+    path('add_students_save', add_students_save, name='student_save'),
 ]

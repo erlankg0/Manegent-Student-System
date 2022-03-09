@@ -4,6 +4,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+
 # Create your models here.
 
 
@@ -32,10 +33,13 @@ class Staffs(models.Model):
 
 class Courses(models.Model):
     id = models.AutoField(primary_key=True)
-    course_name = models.CharField(max_length=255)
+    course_name = models.CharField(max_length=255, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
+
+    def __str__(self):
+        return self.course_name
 
 
 class Subjects(models.Model):
@@ -152,11 +156,10 @@ def create_user_profile(sender, instance, created, **kwargs):
             Students.objects.create(admin=instance)
 
 
-
 @receiver(post_save, sender=CustomUser)
 def save_user_profile(sender, instance, **kwargs):
     if instance.user_type == 1:
-       instance.adminhod.save()
+        instance.adminhod.save()
     if instance.user_type == 2:
         instance.staffs.save()
     if instance.user_type == 3:

@@ -14,7 +14,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" action="{% url 'add-course' %}" method="post">
+                    <form role="form" action="{% url 'course_save' %}" method="post">
                         {% csrf_token %}
                         <div class="card-body">
                             <div class="form-group">
